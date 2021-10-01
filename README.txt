@@ -1,0 +1,1 @@
+The task requires using Prototype and Memento Patterns. This project is raw now but we will try our best to create a good working program.
