@@ -18,3 +18,6 @@ class FSObject():
 
     def delete(self, name: str):
         pass
+
+    def print(self, offset: int):
+        pass

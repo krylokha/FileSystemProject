@@ -2,7 +2,7 @@ from __future__ import annotations
 from fs_object import FSObject
 
 class File(FSObject):
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str):
         self.__name = name
 
     def get_name(self) -> str:
@@ -11,10 +11,15 @@ class File(FSObject):
     def edit(self, name: str):
         self.__name = name
 
-class Folder(FSObject):
-    __children: list[FSObject]
+    def delete(self, name: str):
+        pass
 
-    def __init__(self, name: str) -> None:
+    def print(self, offset: int):
+        print(f"{' ' * (2 * offset)} - {self.__name}")
+
+
+class Folder(FSObject):
+    def __init__(self, name: str):
         self.__name = name
         self.__children = []
 
@@ -22,12 +27,15 @@ class Folder(FSObject):
         return self.__name
 
     def create_folder(self, name: str) -> Folder:
-        new_folder = Folder(name, [])
+        new_folder = Folder(name)
         self.__children.append(new_folder)
+        return new_folder
         # я вообще не уверена, что так можно, не обессудьте))
 
     def create_file(self, name: str) -> File:
-        self.__children.append(name)
+        new_file = File(name)
+        self.__children.append(new_file)
+        return new_file
 
     def get_children(self):
         return self.__children
@@ -45,3 +53,8 @@ class Folder(FSObject):
         for child in self.__children:
             if name == child:
                 self.__children.remove(child)
+
+    def print(self, offset: int):
+        print(f"{' ' * (2 * offset)} - {self.__name}/")
+        for child in self.__children:
+            child.print(offset + 1)

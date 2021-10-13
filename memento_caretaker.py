@@ -10,8 +10,6 @@ class MementoReal(Memento):
         self.root_folder = root_folder
 
 class Caretaker:
-    __snapshots: list[Memento]
-
     def __init__(self):
         self.__snapshots = []
 
@@ -21,14 +19,3 @@ class Caretaker:
     def load(self, index: int) -> Memento:
         return self.__snapshots[index]
 
-def main():
-    fs = FS.FileSystem()
-    root = fs.get_root()
-    pictures = root.create_folder("Фотографии")
-    work = root.create_file("Курсовая.txt")
-    cats = pictures.create_folder("Котики")
-    vasya = pictures.create_file("Вася.jpg")
-    print(fs)
-
-if __name__ == "main":
-    main()
