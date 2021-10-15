@@ -17,6 +17,9 @@ class File(FSObject):
     def print(self, offset: int):
         print(f"{' ' * (2 * offset)} - {self.__name}")
 
+    def copy(self):
+        copy_file = File(self.__name)
+        return copy_file
 
 class Folder(FSObject):
     def __init__(self, name: str):
@@ -58,3 +61,11 @@ class Folder(FSObject):
         print(f"{' ' * (2 * offset)} - {self.__name}/")
         for child in self.__children:
             child.print(offset + 1)
+
+    def copy(self):
+        children_copy = []
+        copy_folder = Folder(self.__name)
+        for child in self.__children:
+            children_copy.append(child.copy())
+        copy_folder.__children = children_copy
+        return copy_folder

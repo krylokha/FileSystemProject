@@ -10,10 +10,10 @@ class FileSystem():
         return self.__root_folder
 
     def create_memento(self) -> Memento:
-        return MementoReal(self.__root_folder.deepcopy())
+        return MementoReal(self.__root_folder.copy())
 
     def restore(self, m: Memento):
-        self.__root_folder = m.root_folder.deepcopy()
+        self.__root_folder = m.root_folder.copy()
 
     def print(self):
-        print(self.__root_folder)
+        self.__root_folder.print(0)

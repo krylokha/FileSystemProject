@@ -21,3 +21,6 @@ class FSObject():
 
     def print(self, offset: int):
         pass
+
+    def copy(self):
+        pass
