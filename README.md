@@ -1,2 +1,2 @@
 # FileSystemProject
-These task includes using Prototype and Memento patterns.
+These task includes Prototype and Memento patterns.
